@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const db = require('./db');
-const profs = require('./routes/professors')
+const professorsRoute = require('./routes/professors')
 
 // Initialize instance of Express app and port
 const app = express();
@@ -20,7 +20,7 @@ app.get('/health', (req, res) => {
 });
 
 // mount the router for professors
-app.use('/professors', profs);
+app.use('/professors', professorsRoute);
 
 // Begin the server
 app.listen(PORT, () => {
