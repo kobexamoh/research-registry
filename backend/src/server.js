@@ -7,7 +7,7 @@ const profs = require('./routes/professors')
 
 // Initialize instance of Express app and port
 const app = express();
-const PORT = process.env.PORT || 3000; // TODO: add this line to learning file for review
+const PORT = process.env.PORT || 3000;
 
 // Set up middleware
 app.use(cors());
