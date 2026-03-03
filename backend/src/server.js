@@ -22,7 +22,7 @@ app.get('/health', (req, res) => {
 
 // mount the router for professors and interests
 app.use('/professors', professorsRouter);
-app.use('/interests', interestsRouter);
+app.use('/interest', interestsRouter);
 
 // Begin the server
 app.listen(PORT, () => {
