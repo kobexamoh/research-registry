@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
         );
 
         res.status(201).json({
-            message: `Expression of interest submitted successfully`,
+            message: 'Expression of interest submitted successfully',
             id: result.rows[0].id
         });
     } catch (err) {
