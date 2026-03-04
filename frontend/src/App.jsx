@@ -1,34 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [professors, setProfessors] = useState([]);
 
+  // Fetch the list of professors from the backend
+  useEffect(() => {
+    fetch('http://localhost:3000/professors')
+      .then(res => res.json())
+      .then(data => setProfessors(data)) // update state of professors with the data from the backend
+      .catch(err => console.error('Error fetching professors:', err));
+  }, []); // empty dependency array AKA run fetch once on component mount)
+
+  // map over the professors and display their names in a list
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <h1>Research Registry</h1>
+      <h2>Professors</h2>
+      {professors.length === 0 ? (
+        <p>Loading professors...</p>) : (
+          <ul>
+            {professors.map(prof => (
+              <li key={prof.id}>
+                <strong>{prof.name}</strong> - {prof.department}
+                <br/>
+                Research: {prof.research_area}
+              </li>
+            ))}
+          </ul>
+        )}
+    </div>
   )
 }
 
