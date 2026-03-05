@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'; // get the API URL from environment variable or default to localhost
 
 function App() {
   const [professors, setProfessors] = useState([]); // state variable to hold the list of professors; initialized as an empty array
@@ -7,7 +8,7 @@ function App() {
 
   // Fetch the list of professors from the backend
   useEffect(() => {
-    fetch('http://localhost:3000/professors')
+    fetch(`${API_URL}/professors`) // make GET request to the backend to fetch professors
       .then(res => res.json())
       .then(data => setProfessors(data)) // update state of professors with the data from the backend
       .catch(err => console.error('Error fetching professors:', err));
