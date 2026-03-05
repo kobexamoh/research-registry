@@ -13,17 +13,32 @@ function App() {
       .catch(err => console.error('Error fetching professors:', err));
   }, []); // empty dependency array AKA run fetch once on component mount)
 
+  // get unique research areas for the filter dropdown
+  const researchAreas = [...new Set(professors.map(p => p.research_area))]; 
+
   // Filter professors based on the research area if a filter is set
+  const filteredProfessors = filter 
+    ? professors.filter(p => p.research_area === filter)
+    : professors; // if filter is set, filter professors by research area; otherwise, show all professors
 
   // map over the professors and display their names in a list
   return (
     <div>
       <h1>Research Registry</h1>
       <h2>Professors</h2>
+      <label>
+        Filter by research area: {' '}
+        <select value={filter} onChange={e => setFilter(e.target.value)}>
+          <option value="">All</option>
+          {researchAreas.map(area => (
+            <option key={area} value={area}>{area}</option>
+          ))}
+        </select>
+      </label>
       {professors.length === 0 ? (
         <p>Loading professors...</p>) : (
           <ul>
-            {professors.map(prof => (
+            {filteredProfessors.map(prof => (
               <li key={prof.id}>
                 <strong>{prof.name}</strong> - {prof.department}
                 <br/>
