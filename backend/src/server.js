@@ -20,6 +20,14 @@ app.get('/health', (req, res) => {
     res.send("A GET request has hit the server: this is the server response showing in the browser");
 });
 
+app.get('/', (req, res) => {
+    res.json({
+        message: "Welcome to the Research Registry API! Use /professors to get the list of professors and /interest to submit your interest in working with a professor.",
+        name: 'Research Registry API',
+        endpoints: ['/professors', '/interest', '/health']
+    });
+});
+
 // mount the router for professors and interests
 app.use('/professors', professorsRouter);
 app.use('/interest', interestsRouter);
