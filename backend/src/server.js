@@ -33,6 +33,10 @@ app.use('/professors', professorsRouter);
 app.use('/interest', interestsRouter);
 
 // Begin the server
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+} // Export app for testing purposes
+
+module.exports = app;
