@@ -21,11 +21,11 @@ router.post('/', async (req, res) => {
         );
 
         res.status(201).json({
-            message: 'Expression of interest submitted successfully',
+            message: 'Expression of interest was submitted successfully.',
             id: result.rows[0].id
         });
     } catch (err) {
-        res.status(500).json({error: 'Failed to submit epxression of interest'});
+        res.status(500).json({error: 'Failed to submit expression of interest'});
     }
 });
 
