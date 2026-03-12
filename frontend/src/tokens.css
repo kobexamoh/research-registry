@@ -1,0 +1,19 @@
+/* Design Tokens */
+:root {
+    /* Colours - Primary */
+    --color-primary: #007A33;
+    --color-primary-light: #6CC24A;
+    --color-primary-dark: #275D38;
+
+    /* Colours - Neutrals */
+    --color-background: #FFFFFF;
+    --color-surface: #F8F9FA;
+    --color-border: #DEE2E6;
+    --color-text: #212529;
+    --color-text-muted: #6C757D;
+
+    /* Colours - Feedback */
+    --color-success: #198754;
+    --color-error: #DC3545;
+    --color-warning: #FFC107;
+}
