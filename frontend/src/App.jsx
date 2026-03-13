@@ -66,6 +66,7 @@ function App() {
     <div className="App">
       <h1>Research Registry</h1>
       <h2>Professors</h2>
+      <div className="filter-section">
       <label>
         Filter by research area: {' '}
         <select value={filter} onChange={e => setFilter(e.target.value)}>
@@ -75,6 +76,7 @@ function App() {
           ))}
         </select>
       </label>
+      </div>
       {professors.length === 0 ? (
         <p>Loading professors...</p>) : (
           <ul>
