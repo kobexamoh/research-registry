@@ -63,7 +63,7 @@ function App() {
     }
   // map over the professors and display their names in a list
   return (
-    <div>
+    <div className="App">
       <h1>Research Registry</h1>
       <h2>Professors</h2>
       <label>
