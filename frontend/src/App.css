@@ -45,3 +45,23 @@ h2 {
   border-radius: var(--radius-sm);
   font-size: var(--font-size-base);
 }
+
+/* Professor List */
+.professor-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.professor-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  transition: box-shadow 0.2s; /* TODO: add ease?? */
+}
+
+.professor-card:hover {
+  box-shadow: var(--shadow-md);
+}

@@ -79,9 +79,9 @@ function App() {
       </div>
       {professors.length === 0 ? (
         <p>Loading professors...</p>) : (
-          <ul>
+          <ul className="professor-list">
             {filteredProfessors.map(prof => (
-              <li key={prof.id}>
+              <li key={prof.id} className="professor-card">
                 <strong>{prof.name}</strong> - {prof.department}
                 <br/>
                 Research: {prof.research_area}
