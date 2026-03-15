@@ -65,3 +65,14 @@ h2 {
 .professor-card:hover {
   box-shadow: var(--shadow-md);
 }
+
+.professor-card strong {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-lg);
+}
+
+.professor-card .research-area {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+}

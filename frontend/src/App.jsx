@@ -84,7 +84,9 @@ function App() {
               <li key={prof.id} className="professor-card">
                 <strong>{prof.name}</strong> - {prof.department}
                 <br/>
-                Research: {prof.research_area}
+                <div className="research-area">
+                  Research Area(s): {prof.research_area}
+                </div>
               </li>
             ))}
           </ul>
