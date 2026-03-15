@@ -77,8 +77,10 @@ function App() {
         </select>
       </label>
       </div>
+      {/* TODO: add a better loading indicator as when the server has been sleeping for a long time, it takes a minute to load from Render's services... */}
       {professors.length === 0 ? (
-        <p>Loading professors...</p>) : (
+        <p>Loading professors...</p>)
+         : (
           <ul className="professor-list">
             {filteredProfessors.map(prof => (
               <li key={prof.id} className="professor-card">
