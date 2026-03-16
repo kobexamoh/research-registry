@@ -121,7 +121,7 @@ function App() {
           <label>Message</label>
             <textarea name="message" value={formData.message} onChange={handleChange} rows="7" />
         </div>
-        <button type="Submit">Submit Interest</button>
+        <button type="Submit" className="btn">Submit Interest</button>
         </form>
         {submitStatus === 'success' && <p style={{color: 'green'}}>Interest submitted!</p>}
         {submitStatus && submitStatus !== 'success' && <p style={{color: 'red'}}>{submitStatus}</p>}
