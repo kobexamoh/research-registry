@@ -95,29 +95,31 @@ function App() {
         )}
         <h2>Want to work with a professor?</h2>
         <form onSubmit={handleSubmit} className="interest-form">
-        <div>
-          <label>Name: <input name="student_name" value={formData.student_name} onChange={handleChange} required /></label>
+        <div className="form-group">
+          <label>Name</label>
+            <input name="student_name" value={formData.student_name} onChange={handleChange} required />
         </div>
-        <div>
-          <label>Email: <input name="student_email" type="email" value={formData.student_email} onChange={handleChange} required /></label>
+        <div className="form-group">
+          <label>Email</label>
+            <input name="student_email" type="email" value={formData.student_email} onChange={handleChange} required />
         </div>
-        <div>
-          <label>Program: <input name="student_program" value={formData.student_program} onChange={handleChange} /></label>
+        <div className="form-group">
+          <label>Program</label>
+            <input name="student_program" value={formData.student_program} onChange={handleChange} />
         </div>
-        <div>
-          <label>Professor: 
+        <div className="form-group">
+          <label>Professor</label>
+
             <select name="professor_id" value={formData.professor_id} onChange={handleChange} required>
               <option value="">Select a professor</option>
               {professors.map(prof => (
                 <option key={prof.id} value={prof.id}>{prof.name}</option>
               ))}
             </select>
-          </label>
         </div>
-        <div>
-          <label>Message:<br/>
+        <div className="form-group">
+          <label>Message</label>
             <textarea name="message" value={formData.message} onChange={handleChange} rows="7" />
-          </label>
         </div>
         <button type="Submit">Submit Interest</button>
         </form>
