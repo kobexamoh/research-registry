@@ -131,3 +131,22 @@ h2 {
 .btn:hover {
   background: var(--color-primary-dark);
 }
+
+/* Feedback messaging */
+.message {
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-md);
+}
+
+.message--success {
+  background: #D4EDDA; /* TODO: add to color tokens */
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+
+.message--error {
+  background: #F8D7DA; /* TODO: add to color tokens and replace */
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}

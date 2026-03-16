@@ -123,8 +123,13 @@ function App() {
         </div>
         <button type="Submit" className="btn">Submit Interest</button>
         </form>
-        {submitStatus === 'success' && <p style={{color: 'green'}}>Interest submitted!</p>}
-        {submitStatus && submitStatus !== 'success' && <p style={{color: 'red'}}>{submitStatus}</p>}
+        {/* TODO: on submit, hide the form and replace with the success rather than having it appear under the form */}
+        {submitStatus === 'success' && (
+          <div className="message message--success">Interest submitted!</div>
+          )}
+        {submitStatus && submitStatus !== 'success' && (
+          <div className="message message--error">{submitStatus}</div>
+        )}
     </div>
   )
 }
