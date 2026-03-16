@@ -94,7 +94,7 @@ function App() {
           </ul>
         )}
         <h2>Want to work with a professor?</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="interest-form">
         <div>
           <label>Name: <input name="student_name" value={formData.student_name} onChange={handleChange} required /></label>
         </div>
