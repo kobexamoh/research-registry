@@ -1,15 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const insterestSchema = require('../validators/interestSchema'); // import the Joi validation schema
 
 // create interest endpoint
 router.post('/', async (req, res) => {
-    const { student_name, student_email, student_program, message, professor_id} = req.body;
+    // Validate the request body againss the Joi schema
+    const { error, value } = interestSchema.validate(req.body, { abortEarly: false }); // check data against all rules and return all errors, if any.
 
-    // initial validation - TODO: change to Joi for Phase 2
-    if (!student_name || !student_email || !professor_id) {
-        return res.status(400).json({ error: 'student_name, student_email, and professor_id are required' });
+    if (error) {
+        const errorMessages = error.details.map(detail => detail.message);
+        return res.status(400).json({ error: errorMessages.join(', ') });
     }
+
+    // Use validated data
+    const { student_name, student_email, student_program, message, professor_id} = value;
 
     try {
         const result = await db.query(
