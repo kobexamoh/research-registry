@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
-const insterestSchema = require('../validators/interestSchema'); // import the Joi validation schema
+const interestSchema = require('../validators/interestSchema'); // import the Joi validation schema
 
 // create interest endpoint
 router.post('/', async (req, res) => {
