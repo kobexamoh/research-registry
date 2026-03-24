@@ -10,8 +10,10 @@ const interestsRouter = require('./routes/interest');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Set up middleware
-app.use(cors());
+// Set up middleware; begin using CORS and JSON parsing for incoming requests
+const corsOptions = {
+    
+}
 app.use(express.json());
 
 // Health check route (for testing)
