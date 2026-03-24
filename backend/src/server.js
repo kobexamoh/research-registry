@@ -12,8 +12,12 @@ const PORT = process.env.PORT || 3000;
 
 // Set up middleware; begin using CORS and JSON parsing for incoming requests
 const corsOptions = {
-    
-}
+    origin: process.env.NODE_ENV === 'prodution'
+        ? 'https://research-registry.vercel.app'
+        : 'http://localhost:5173',
+        optionsSuccessStatus: 200
+}; // Adjust CORS options based on environment (production vs development)
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Health check route (for testing)
