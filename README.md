@@ -85,6 +85,21 @@ Submit an expression of interest.
 Health check endpoint.
 
 ## Data Models
+## Entity-Relationship Diagram
+┌──────────────────────────┐       ┌──────────────────────────────┐
+│       professors         │       │   expressions_of_interest    │
+├──────────────────────────┤       ├──────────────────────────────┤
+│ id (PK)                  │       │ id (PK)                      │
+│ name                     │       │ student_name                 │
+│ department               │       │ student_email                │
+│ research_area            │       │ student_program              │
+│ keywords[]               │       │ message                      │
+│ accepting_students       │       │ professor_id (FK) ───────────┼───┐
+└──────────────────────────┘       └──────────────────────────────┘   │
+         │                                                            │
+         │                              1:N                           │
+         └────────────────────────────────────────────────────────────┘
+         One professor can have many expressions of interest
 
 ### Professor
 | Field | Type | Description |
