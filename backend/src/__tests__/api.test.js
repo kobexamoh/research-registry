@@ -33,7 +33,6 @@ describe('POST /interest', () => {
     });
 });
 
-
 // Test 3: POST interest fails with missing fields.
 describe('POST /interest with missing fields', () => {
     it('should return a 400 error when the required fields are missing', async () => {
@@ -50,3 +49,13 @@ describe('POST /interest with missing fields', () => {
         // TODO: a possible test for a 500 error if the DB fails?
     });
 });
+
+// Test 4: tests for search functionality using red, green, refactor.
+
+    // Test 4.1: search returns matching professors.
+
+    // Test 4.2: search returns empty array if no matches found.
+
+    // Test 4.3: search is case-insensitive.
+
+    // Test 4.4: empty search query returns all professors.
