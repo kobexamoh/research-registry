@@ -170,6 +170,7 @@ research-registry/
 - Email notifications on interest submission
 - Search and pagination
 - Student accounts and application tracking
+--- Ability of students to register as incoming or existing research students
 
 ---
 
