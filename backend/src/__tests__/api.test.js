@@ -1,6 +1,7 @@
 // set up and imports
 const request = require('supertest');
 const app = require('../server');
+const db = require('../db');
 
 // Test suite for the API endpoints.
 
@@ -68,3 +69,9 @@ describe('GET /professors?search=term', () => {
     // Test 4.3: search is case-insensitive.
 
     // Test 4.4: empty search query returns all professors.
+
+
+// Close db connection after all tests so test suite doesn't hang.
+afterAll(async () => {
+    await db.end();
+});
