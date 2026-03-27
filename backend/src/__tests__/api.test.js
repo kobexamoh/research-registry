@@ -12,7 +12,6 @@ describe('GET /professors', () => {
         expect(res.statusCode).toBe(200);
         expect(Array.isArray(res.body)).toBe(true); // confirm/check that the response body is an array (the list of professors)
         expect(res.body.length).toBeGreaterThan(0); // confirm/check that the array of professors is not empty
-        expect()
     });
 });
 
