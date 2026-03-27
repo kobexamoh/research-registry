@@ -51,16 +51,16 @@ describe('POST /interest with missing fields', () => {
 });
 
 // Test 4: tests for search functionality using red, green, refactor.
-
     // Test 4.1: search returns matching professors.
 describe('GET /professors?search=term', () => {
-    // TODO: should term in line 56 and below be replaced with a constant testing search term?
+    const searchTerm = 'Science';
     it('should display all professors who have a field in the database matching the search term', async () => {
-        const res = await request(app).get('/professors?search=term'); // make a GET request to the endpoint with the query string being the searched term
+        const res = await request(app).get(`/professors?search=${searchTerm}`); // make a GET request to the endpoint with the query string being the searched term
 
         expect(res.statusCode).toBe(200); // request succeeds // TODO maybe put the status code into a variable that is declared once and used often so that this line isn't repeated across tests?
         expect(Array.isArray(res.body)).toBe(true); // confirm that response body is array // TODO also a repetition of earlier line so refactor this and line in other test
-        expect(res.body).toContain(term); // response should have property that matches the search term
+        expect(res.body.length).toBeGreaterThan(0); // I expect that the array of results is not empty
+        // TODO: whereas expect.objectContaining looks at key value pairs, I need to get a little creative in finding searchTerm in the response body (unless I want to have the search only look at certain fields in the response). But that's for later.
     });
 });
 
