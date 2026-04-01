@@ -63,6 +63,8 @@ describe('GET /professors?search=term', () => {
             return resObject.research_area.includes(profResearchArea);
         }
         
+        // TODO: Convert and finalize into expect
+        const result = res.body.every();
 
         expect(res.statusCode).toBe(200); // request succeeds // TODO maybe put the status code into a variable that is declared once and used often so that this line isn't repeated across tests?
         expect(Array.isArray(res.body)).toBe(true); // confirm that response body is array // TODO also a repetition of earlier line so refactor this and line in other test
