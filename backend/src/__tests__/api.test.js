@@ -57,16 +57,10 @@ describe('GET /professors?search=term', () => {
     it('should display all professors who have a field in the database matching the search term', async () => {
         const res = await request(app).get(`/professors?search=${searchTerm}`); // make a GET request to the endpoint with the query string being the searched term
 
-        function getSearchTerm(resObject) {
-            let profResearchArea;
+        const hasSearchTermInDepartment = (prof) => prof.department.toLowerCase().includes(searchTerm.toLowerCase());
+        const hasSearchTermInName = (prof) => prof.name.toLowerCase().includes(searchTerm.toLowerCase());
+        const hasSearchTermInKeywords = (prof) => prof.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-            return resObject.research_area.includes(profResearchArea);
-        }
-        
-        // TODO: Convert and finalize into expect
-        const result = res.body.every(professor => {
-          
-        }); // recall .every() returns true if EVERYTHING is true...we want all results to contain search term.
 
         expect(res.statusCode).toBe(200); // request succeeds // TODO maybe put the status code into a variable that is declared once and used often so that this line isn't repeated across tests?
         expect(Array.isArray(res.body)).toBe(true); // confirm that response body is array // TODO also a repetition of earlier line so refactor this and line in other test
