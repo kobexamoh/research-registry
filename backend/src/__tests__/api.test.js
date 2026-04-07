@@ -69,8 +69,9 @@ describe('GET /professors?search=term', () => {
         // TODO: whereas expect.objectContaining looks at key value pairs, I need to get a little creative in finding searchTerm in the response body (unless I want to have the search only look at certain fields in the response). But that's for later.
         const results = res.body;
         const hasSearchTermInDepartment = results.filter( (profObject) => profObject.department.some(
-
-        ))
+          (attribute) => attribute.toLowerCase() === searchTerm,
+        ),
+      );
         expect(res.body).toEqual(
             expect.arrayContaining([
                 expect.objectContaining({
