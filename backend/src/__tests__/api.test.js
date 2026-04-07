@@ -57,7 +57,8 @@ describe('GET /professors?search=term', () => {
     it('should display all professors who have a field in the database matching the search term', async () => {
         const res = await request(app).get(`/professors?search=${searchTerm}`); // make a GET request to the endpoint with the query string being the searched term
 
-        const hasSearchTermInDepartment = (prof) => prof.department.toLowerCase().includes(searchTerm.toLowerCase());
+        // const hasSearchTermInDepartment = (prof) =>
+        //   prof.department.toLowerCase().includes(searchTerm.toLowerCase());
         const hasSearchTermInName = (prof) => prof.name.toLowerCase().includes(searchTerm.toLowerCase());
         const hasSearchTermInKeywords = (prof) => prof.name.toLowerCase().includes(searchTerm.toLowerCase());
 
@@ -66,6 +67,10 @@ describe('GET /professors?search=term', () => {
         expect(Array.isArray(res.body)).toBe(true); // confirm that response body is array // TODO also a repetition of earlier line so refactor this and line in other test
         expect(res.body.length).toBeGreaterThan(0); // I expect that the array of results is not empty
         // TODO: whereas expect.objectContaining looks at key value pairs, I need to get a little creative in finding searchTerm in the response body (unless I want to have the search only look at certain fields in the response). But that's for later.
+        const results = res.body;
+        const hasSearchTermInDepartment = results.filter( (profObject) => profObject.department.some(
+
+        ))
         expect(res.body).toEqual(
             expect.arrayContaining([
                 expect.objectContaining({
