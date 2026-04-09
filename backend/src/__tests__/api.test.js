@@ -53,10 +53,9 @@ describe('POST /interest with missing fields', () => {
 // Test 4: tests for search functionality using red, green, refactor.
     // Test 4.1: search returns matching professors.
 describe('GET /professors?search=term', () => {
-    const searchTerm = 'Science';
+    const searchTerm = 'Humanities';
     it('should display all professors who have a field in the database matching the search term', async () => {
         const res = await request(app).get(`/professors?search=${searchTerm}`); // make a GET request to the endpoint with the query string being the searched term
-
 
         expect(res.statusCode).toBe(200); // request succeeds // TODO maybe put the status code into a variable that is declared once and used often so that this line isn't repeated across tests?
         expect(Array.isArray(res.body)).toBe(true); // confirm that response body is array // TODO also a repetition of earlier line so refactor this and line in other test
@@ -77,7 +76,7 @@ describe('GET /professors?search=term', () => {
 
             return deptCondition || nameCondition || researchAreaCondition; // return true if searchTerm found inside fields
           }
-          
+
         // pass function to .every()
         const allMatch = res.body.every(professorContainsSearchTerm);
         expect(allMatch).toBe(true);
