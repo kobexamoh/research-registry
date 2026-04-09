@@ -57,14 +57,6 @@ describe('GET /professors?search=term', () => {
     it('should display all professors who have a field in the database matching the search term', async () => {
         const res = await request(app).get(`/professors?search=${searchTerm}`); // make a GET request to the endpoint with the query string being the searched term
 
-        
-        
-
-        // const hasSearchTermInDepartment = (prof) =>
-        //   prof.department.toLowerCase().includes(searchTerm.toLowerCase());
-        const hasSearchTermInName = (prof) => prof.name.toLowerCase().includes(searchTerm.toLowerCase());
-        const hasSearchTermInKeywords = (prof) => prof.name.toLowerCase().includes(searchTerm.toLowerCase());
-
 
         expect(res.statusCode).toBe(200); // request succeeds // TODO maybe put the status code into a variable that is declared once and used often so that this line isn't repeated across tests?
         expect(Array.isArray(res.body)).toBe(true); // confirm that response body is array // TODO also a repetition of earlier line so refactor this and line in other test
@@ -87,21 +79,6 @@ describe('GET /professors?search=term', () => {
           }
         });
         expect(allMatch).toBe(true);
-        // TODO: whereas expect.objectContaining looks at key value pairs, I need to get a little creative in finding searchTerm in the response body (unless I want to have the search only look at certain fields in the response). But that's for later.
-        const results = res.body;
-        const hasSearchTermInDepartment = results.filter( (profObject) => profObject.department.some(
-          (attribute) => attribute.toLowerCase() === searchTerm,
-        ),
-      );
-        expect(res.body).toEqual(
-            expect.arrayContaining([
-                expect.objectContaining({
-                    name: searchTerm,
-                    research_area: searchTerm,
-                    keywords: searchTerm
-                })
-            ])
-        )
     });
 });
 
