@@ -62,9 +62,9 @@ describe('GET /professors?search=term', () => {
         expect(Array.isArray(res.body)).toBe(true); // confirm that response body is array // TODO also a repetition of earlier line so refactor this and line in other test
         expect(res.body.length).toBeGreaterThan(0); // I expect that the array of results is not empty
 
-        // find searchTerm in response body
-        const allMatch = res.body.every((professor) => {
-          function professorContainsSearchTerm(profObject) {
+        /* block: confirm that searchTerm is search results' fields */
+        // declare function
+        function professorContainsSearchTerm(profObject) {
             let deptCondition = profObject.department
               .toLowerCase()
               .includes(searchTerm.toLowerCase());
@@ -77,7 +77,9 @@ describe('GET /professors?search=term', () => {
 
             return deptCondition || nameCondition || researchAreaCondition; // return true if searchTerm found inside fields
           }
-        });
+          
+        // pass function to .every()
+        const allMatch = res.body.every(professorContainsSearchTerm);
         expect(allMatch).toBe(true);
     });
 });
