@@ -6,6 +6,8 @@ const db = require('../db');
 // create professors endpoint for testing and build
 router.get('/', async (req, res) => {
     try {
+        const searchTerm = req.query.search;
+        console.log('Search term: ', searchTerm);
         const result = await db.query('SELECT * FROM professors ORDER BY id');
         res.json(result.rows);
     } catch (err) {
