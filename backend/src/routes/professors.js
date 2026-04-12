@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
     try {
         const searchTerm = req.query.search;
         console.log('Search term: ', searchTerm);
-        const result = await db.query('SELECT * FROM professors ORDER BY id');
+        // TODO: turn into two cases: if searchTerm undefined, use original query: otherwise use searchTerm
+        const result = await db.query('SELECT * FROM professors WHERE department ILIKE searchTerm OR name ILIKE searchTerm OR research_area ILIKE searchTerm ORDER BY id');
         res.json(result.rows);
     } catch (err) {
         // TODO: either switch to global error handling or display gracefully + prettily for the user
