@@ -6,6 +6,7 @@ const db = require('../db');
 // create professors endpoint for testing and build
 router.get('/', async (req, res) => {
     try {
+        // TODO: refactor try block to avoid code duplication...
         const searchTerm = req.query.search;
         if (typeof searchTerm !== 'undefined') {
             // that is, it exists so filter it:
