@@ -7,8 +7,6 @@ const db = require('../db');
 router.get('/', async (req, res) => {
     try {
         const searchTerm = req.query.search;
-        // console.log('Search term: ', searchTerm);
-        // TODO: turn into two cases: if searchTerm undefined, use original query: otherwise use searchTerm
         if (typeof searchTerm !== 'undefined') {
             // that is, it exists so filter it:
             const result = await db.query('SELECT * FROM professors WHERE department ILIKE $1 OR name ILIKE $1 OR research_area ILIKE $1 ORDER BY id', [`%${searchTerm}%`]);
