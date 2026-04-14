@@ -6,17 +6,21 @@ const db = require('../db');
 // create professors endpoint for testing and build
 router.get('/', async (req, res) => {
     try {
-        // TODO: refactor try block to avoid code duplication...
         const searchTerm = req.query.search;
+        let query;
+        let params = []; // can be empty
+
         if (typeof searchTerm !== 'undefined') {
-            // that is, it exists so filter it:
-            const result = await db.query('SELECT * FROM professors WHERE department ILIKE $1 OR name ILIKE $1 OR research_area ILIKE $1 ORDER BY id', [`%${searchTerm}%`]);
-            res.json(result.rows);
+            // if search exists, find it in the table
+            query = 'SELECT * FROM professors WHERE department ILIKE $1 OR name ILIKE $1 OR research_area ILIKE $1 ORDER BY id';
+            params = [`%${searchTerm}%`];
         } else {
-            // that is, it doesn't exist, so don't filter it
-            const result = await db.query('SELECT * FROM professors ORDER BY id');
-            res.json(result.rows);
+            // if not, no need to filter.
+            query = 'SELECT * FROM professors ORDER BY id';
+            // params[] is empty.
         }
+        const result = await db.query(query, params);
+        res.json(result.rows);
     } catch (err) {
         // TODO: either switch to global error handling or display gracefully + prettily for the user
         console.error('Error fetching professors:', err.message);
