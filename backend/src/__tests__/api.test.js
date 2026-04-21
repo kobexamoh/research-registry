@@ -84,6 +84,12 @@ describe('GET /professors?search=term', () => {
 });
 
     // Test 4.2: search returns empty array if no matches found.
+    describe('GET /professors?search=term', () => {
+        it('should return an empty array if no matches are found', async () => {
+
+            // same as before: expect request to succed, expect request body to be an array, but the new condition is that I expect response body to be length of zero if and only if the above (i.e. professorContainsSearchTerm declaration and call) returns false in...all of the three areas (department, name, researchArea)
+        });
+    });
 
     // Test 4.3: search is case-insensitive.
 
