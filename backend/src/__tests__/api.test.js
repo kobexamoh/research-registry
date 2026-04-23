@@ -88,7 +88,8 @@ describe('GET /professors?search=term', () => {
         it('should return an empty array if no matches are found', async () => {
 
             expect(res.statusCode).toBe(200); // same as before: expect request to succeed
-            expect(Array.isArray(res.body)).toBe(true) // expect request body to be an array but the new condition is that I expect response body to be length of zero if and only if the above (i.e. professorContainsSearchTerm declaration and call) returns false in...all of the three areas (department, name, researchArea)
+            expect(Array.isArray(res.body)).toBe(true) // expect request body to be an array
+            expect(res.body.length).toEqual([]); // expect request array to be array of length zero (empty array)
         });
     });
 
